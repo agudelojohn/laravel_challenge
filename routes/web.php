@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+//Para hacer úso de un controlador tipo Resource, se especifica en el tipó de ruta
+Route::resource('User','UserController');

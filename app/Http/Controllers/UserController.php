@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('Users.UserCRUD');
     }
 
     /**
@@ -34,7 +34,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new UserProfile();
+        $user->name = $request->input('name');
+        $user->email = $request->input('emai');
+        $user->passeword = $request->input('password');
+        $user->save();
+
+        return 'Guardado correctamente';
+        // return $request->all();
     }
 
     /**

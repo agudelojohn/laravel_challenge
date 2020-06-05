@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
             $table->date('endDate');
             $table->char('status',1);
             $table->unsignedBigInteger('userOwner');
-            $table->foreign('userOwner')->references('id')->on('users');
+            $table->foreign('userOwner')->references('id')->on('user_profiles');
             $table->timestamps();
         });
     }
