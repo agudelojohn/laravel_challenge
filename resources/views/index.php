@@ -11,9 +11,9 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <img src="http://pluspng.com/img-png/welcome-png-welcome-png-file-663.png" alt="Welcome PNG">
-            <img src="../../Images/Welcome.png" alt="">
+        <div class="row ">
+            <img class="card-img-top mt-5" src="http://pluspng.com/img-png/welcome-png-welcome-png-file-663.png"
+                alt="Welcome PNG">
         </div>
         <div class="row">
             <div class="col">
@@ -25,7 +25,15 @@
                 </form>
             </div>
             <div class="col">
-                2 of 2
+                <div class="container">
+                    <div class="row mx-auto">
+                        <div class="col"><a href="" class="btn btn-primary">Create new event</a></div>
+                        <div class="col"><a href="" class="btn btn-primary">Today events</a></div>
+                        <div class="w-100 "><br></div>
+                        <div class="col"><a href="" class="btn btn-primary">Comming events</a></div>
+                        <div class="col"><a href="" class="btn btn-primary">All events</a> </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

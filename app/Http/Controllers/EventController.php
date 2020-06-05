@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Event;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -13,7 +17,32 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+
+        return view('Events.EventList', compact('events'));
+    }
+    public function listar($type)
+    {
+        if ($type == 'today'){
+            $today =  date("Y/m/d");
+            
+            $events = DB::table('events')->where('startDate', '=', $today)->get();
+            return view('Events.EventList', compact('events'));
+        }else{
+            if($type == 'five')
+            {
+
+                $today =  date("Y/m/d");
+                $user = Auth::id();
+                $end = Carbon::today();
+                $daysToAdd = 5;
+                $end = $end->addDays($daysToAdd);
+                // dd($end);
+                $events = DB::table('events')->whereBetween('startDate', [$today, $end])->get();
+                return view('Events.EventList', compact('events'));
+                // return $end->date;
+            }
+        }
     }
 
     /**
@@ -23,7 +52,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $userId = Auth::id();
+        return view('Events.EventCreate', compact('userId'));
+        // return view('Events.EventCreate');
     }
 
     /**
@@ -34,7 +65,19 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+        $event = new Event();
+        
+        $event->title = $request->input('title');
+        $event->description = $request->input('description');
+        $event->startDate = $request->input('startDate');
+        $event->endDate = $request->input('endDate');
+        $event->status = '1';
+        $event->userOwner = $request->input('userOwner');
+
+        $event-> save();
+
+        return 'Guardado correctamente <br> <a href="/" > Home </a>';
     }
 
     /**
@@ -56,7 +99,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::find($id);
+        
+        return view('Events.EventEdit',compact('event'));
     }
 
     /**
@@ -68,7 +113,10 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::find($id);
+        $event->fill($request->all());
+        $event->save();
+        return 'Modificado correctamente <br> <a href="/" > Home </a>';
     }
 
     /**
@@ -80,5 +128,9 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function EventList()
+    {
+        return view('Events.EventList');
     }
 }
