@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 //Para hacer úso de un controlador tipo Resource, se especifica en el tipó de ruta
-Route::resource('User','UserController');
+Route::resource('UserProfile','UserController');

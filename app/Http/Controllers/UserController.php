@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//Hay que incorporar la clase que se va a usar para guardar
+use App\UserProfile;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $Profiles = UserProfile::All();
+        return view('Users.index', compact('Profiles'));
     }
 
     /**
@@ -36,8 +39,8 @@ class UserController extends Controller
     {
         $user = new UserProfile();
         $user->name = $request->input('name');
-        $user->email = $request->input('emai');
-        $user->passeword = $request->input('password');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
         $user->save();
 
         return 'Guardado correctamente';
@@ -52,7 +55,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $profile = UserProfile::find($id);
+        return view('Users.ShowProfile',compact('profile'));
     }
 
     /**

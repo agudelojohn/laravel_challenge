@@ -17,7 +17,12 @@
         </div>
         <div class="row">
             <div class="col">
-                1 of 2
+                <form action="get" method="UserProfile/">
+                    <label for="">id</label>
+                    <input type="text" name=id>
+                    <!-- <a href="User/1" class="btn btn-primary">Go somewhere</a> -->
+                    <button type="submit">Go</button>
+                </form>
             </div>
             <div class="col">
                 2 of 2
