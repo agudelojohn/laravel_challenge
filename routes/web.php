@@ -42,3 +42,5 @@ Route::get('Event/delete/{type}', 'EventController@delete');
 Route::resource('User','UserController');
 
 Route::get('Event/export/{type}', 'EventController@export');
+
+Route::resource('Invitation','InvitationController');

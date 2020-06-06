@@ -151,8 +151,7 @@ class EventController extends Controller
     
     public function invite($id)
     {
-        $event = Event::find($id);
-        return $event;
+        $event = Event::find($id);        
     }
     
     public function export($type) 

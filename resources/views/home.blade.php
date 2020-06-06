@@ -16,6 +16,9 @@
                 <div class="w-100 "><br></div>
                 <div class="col"><a href="Event/Listar/five" class="btn btn-block btn-primary">Comming events</a></div>
                 <div class="col"><a href="Event" class="btn btn-block btn-primary">All events</a> </div>
+                <div class="w-100 "><br></div>
+                <div class="col"><a href="Invitation/create" class="btn btn-block btn-primary">New invitation</a></div>
+                <div class="col"><a href="" class="btn btn-block btn-primary"></a> </div>
             </div>
     </div>
 </div>
