@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container justify-content-right">
+<a class="btn btn-primary ml-3" href="{{url('Event/export')}}/{{$type}}">Export</a>
+</div>
 <div class=container>
     <div class="row justify-content-center">
         @foreach($events as $event)

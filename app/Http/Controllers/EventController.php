@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Event;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Exports\EventsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EventController extends Controller
 {
@@ -19,15 +21,15 @@ class EventController extends Controller
     {
         // $events = Event::all();
         $events = DB::table('events')->where('userOwner', '=', Auth::id())->get();
-
-        return view('Events.EventList', compact('events'));
+        $type = 'all';
+        return view('Events.EventList', compact('events', 'type'));
     }
     public function listar($type)
     {
         if ($type == 'today'){
             $today =  Carbon::today();
             $events = DB::table('events')->where('userOwner', '=', Auth::id())->where('startDate', '=', $today)->get();
-            return view('Events.EventList', compact('events'));
+            return view('Events.EventList', compact('events', 'type'));
         }else{
             if($type == 'five')
             {
@@ -39,7 +41,7 @@ class EventController extends Controller
                 $end = $end->addDays($daysToAdd);
                 // dd($end);
                 $events = DB::table('events')->where('userOwner', '=', Auth::id())->whereBetween('startDate', [$today, $end])->get();
-                return view('Events.EventList', compact('events'));
+                return view('Events.EventList', compact('events', 'type'));
                 // return $end->date;
             }
         }
@@ -145,5 +147,9 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         return view('Events.EventDelete', compact('event'));
+    }
+    public function export($type) 
+    {
+        return (new EventsExport($type))->download('events.xlsx');        
     }
 }
