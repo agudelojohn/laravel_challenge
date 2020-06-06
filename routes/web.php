@@ -36,6 +36,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('Event/Listar/{type}', 'EventController@listar');
+Route::get('Event/delete/{type}', 'EventController@delete');
 
 Route::resource('User','UserController');
+// Route::get('/User/Edit/{id}', function () {   
+//     $user = Auth::user();
+//     return view('Users.UserEdit', compact('user'));
+// });
 

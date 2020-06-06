@@ -128,10 +128,17 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+        $event->delete();
+        return 'Eliminado  correctamente <br> <a href="/" > Home </a>';
     }
     public function EventList()
     {
         return view('Events.EventList');
+    }
+    public function delete($id)
+    {
+        $event = Event::find($id);
+        return view('Events.EventDelete', compact('event'));
     }
 }

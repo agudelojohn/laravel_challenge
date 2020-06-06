@@ -79,7 +79,7 @@
                             </li>
                             
                             <li class="nav-item dropdown ml-3" >
-                                <a class="btn btn-primary" href="Auth/{{ Auth::user()->id }}/edit">
+                                <a class="btn btn-primary" href="User/{{ Auth::user()->id }}/edit">
                                     Change profile
                                 </a>
                             </li>

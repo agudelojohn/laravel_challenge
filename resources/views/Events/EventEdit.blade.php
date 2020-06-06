@@ -6,7 +6,7 @@
         @method('PUT')
         @csrf
         <div class="form-group">
-            <input type="text" name=title class='form-control' placeholder="Title" value={{$event->title ?? ''}}>
+            <input type="text" name=title class='form-control' placeholder="Title" value={{$user->title ?? ''}}>
         </div> 
         <div class="form-group">
             <input type="textarea" name=description class='form-control' placeholder="Description" value={{$event->description ?? ''}}>

@@ -11,6 +11,7 @@
                 <p class="card-text">{{ $event->startDate }}</p>
                 <p class="card-text">{{ $event->endDate }}</p>
                 <a href="Event/{{ $event->id }}/edit" class="btn btn-primary">Edit</a>
+                <a href="Event/delete/{{ $event->id }}" class="btn btn-primary">Delete</a>
             </div>
         </div>
     </div>
