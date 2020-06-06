@@ -1,20 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-
-@foreach($events as $event)
-    <div class=container>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ $event->title }}</h5>
-                <p class="card-text">{{ $event->description }}</p>
-                <p class="card-text">{{ $event->startDate }}</p>
-                <p class="card-text">{{ $event->endDate }}</p>
-                <a href="Event/{{ $event->id }}/edit" class="btn btn-primary">Edit</a>
-                <a href="Event/delete/{{ $event->id }}" class="btn btn-primary">Delete</a>
+<div class=container>
+    <div class="row justify-content-center">
+        @foreach($events as $event)
+            <div class="card mx-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Title:</strong>{{ $event->title }}</h5>
+                    <p class="card-text"><strong>Description:</strong> {{ $event->description }}</p>
+                    <p class="card-text"><strong>Start date:</strong>    {{ $event->startDate }}</p>
+                    <p class="card-text"><strong>End date:</strong> {{ $event->endDate }}</p>
+                    <div class="row justify-content-center">
+                        {{-- <a href="Event/{{ $event->id }}/edit" class="btn btn-primary">Edit</a> --}}
+                        {{-- <a href="Event/delete/{{ $event->id }}" class="btn btn-primary ml-3">Delete</a> --}}
+                    <a href="{{ url('Event') }}/{{ $event->id }}/edit" class="btn btn-primary">Edit</a>
+                    <a href="{{ url('Event') }}/delete/{{$event->id}}" class="btn btn-primary ml-3">Delete</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
-@endforeach
-
+</div>
 @endsection

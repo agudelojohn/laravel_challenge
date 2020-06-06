@@ -25,8 +25,7 @@ class EventController extends Controller
     public function listar($type)
     {
         if ($type == 'today'){
-            $today =  date("Y/m/d");
-            
+            $today =  Carbon::today();
             $events = DB::table('events')->where('userOwner', '=', Auth::id())->where('startDate', '=', $today)->get();
             return view('Events.EventList', compact('events'));
         }else{
@@ -78,7 +77,9 @@ class EventController extends Controller
 
         $event-> save();
 
-        return 'Guardado correctamente <br> <a href="/" > Home </a>';
+        // return 'Guardado correctamente <br> <a href="/" > Home </a>';
+        $operacion= 'Created';
+        return view('correct', compact('operacion'));
     }
 
     /**
@@ -117,7 +118,9 @@ class EventController extends Controller
         $event = Event::find($id);
         $event->fill($request->all());
         $event->save();
-        return 'Modificado correctamente <br> <a href="/" > Home </a>';
+        // return 'Modificado correctamente <br> <a href="/" > Home </a>';
+        $operacion= 'Updated';
+        return view('correct', compact('operacion'));
     }
 
     /**
@@ -130,7 +133,9 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->delete();
-        return 'Eliminado  correctamente <br> <a href="/" > Home </a>';
+        // return 'Eliminado  correctamente <br> <a href="/" > Home </a>';
+        $operacion= 'Deleted';
+        return view('correct', compact('operacion'));
     }
     public function EventList()
     {

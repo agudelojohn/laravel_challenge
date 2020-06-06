@@ -21,7 +21,8 @@ class UserController extends Controller
         // $user->fill($request->all());
         // $user->save();
         // $user->profile->save();
-        // return 'Modificado correctamente <br> <a href="/" > Home </a>';
+        // $operacion= 'Update';
+        // return view('correct', compact('operacion'));
     }
     public function store(Request $request){
         return 'nn';

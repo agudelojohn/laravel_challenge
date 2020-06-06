@@ -66,7 +66,7 @@
                             </li>
                             <li class="nav-item dropdown">
                                 {{-- <div class="dropdown-menu " aria-labelledby="navbarDropdown"> --}}
-                                <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="btn btn-outline-secondary" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -79,7 +79,7 @@
                             </li>
                             
                             <li class="nav-item dropdown ml-3" >
-                                <a class="btn btn-primary" href="User/{{ Auth::user()->id }}/edit">
+                                <a class="btn btn-outline-secondary" href="User/{{ Auth::user()->id }}/edit">
                                     Change profile
                                 </a>
                             </li>
