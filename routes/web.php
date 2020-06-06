@@ -27,9 +27,6 @@ Route::get('/', function () {
     }
 });
 
-// Route::get('/', function () {
-//     return view('HomeController.index');
-// });
 
 //Para hacer úso de un controlador tipo Resource, se especifica en el tipó de ruta
 Route::resource('Event','EventController');
@@ -40,4 +37,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('Event/Listar/{type}', 'EventController@listar');
 
+Route::resource('User','UserController');
 

@@ -17,7 +17,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        // $events = Event::all();
+        $events = DB::table('events')->where('userOwner', '=', Auth::id())->get();
 
         return view('Events.EventList', compact('events'));
     }
@@ -26,7 +27,7 @@ class EventController extends Controller
         if ($type == 'today'){
             $today =  date("Y/m/d");
             
-            $events = DB::table('events')->where('startDate', '=', $today)->get();
+            $events = DB::table('events')->where('userOwner', '=', Auth::id())->where('startDate', '=', $today)->get();
             return view('Events.EventList', compact('events'));
         }else{
             if($type == 'five')
@@ -38,7 +39,7 @@ class EventController extends Controller
                 $daysToAdd = 5;
                 $end = $end->addDays($daysToAdd);
                 // dd($end);
-                $events = DB::table('events')->whereBetween('startDate', [$today, $end])->get();
+                $events = DB::table('events')->where('userOwner', '=', Auth::id())->whereBetween('startDate', [$today, $end])->get();
                 return view('Events.EventList', compact('events'));
                 // return $end->date;
             }
