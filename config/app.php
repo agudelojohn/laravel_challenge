@@ -2,6 +2,8 @@
 
 return [
 
+    // Application developed by John Alejandro Agudelo, using Laravel and MySql
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
