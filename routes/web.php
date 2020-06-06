@@ -36,6 +36,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('Event/Listar/{type}', 'EventController@listar');
+Route::get('Event/invite/{id}', 'EventController@invite');
 Route::get('Event/delete/{type}', 'EventController@delete');
 
 Route::resource('User','UserController');

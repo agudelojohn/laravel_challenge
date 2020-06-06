@@ -16,7 +16,8 @@
                     <div class="row justify-content-center">
                         {{-- <a href="Event/{{ $event->id }}/edit" class="btn btn-primary">Edit</a> --}}
                         {{-- <a href="Event/delete/{{ $event->id }}" class="btn btn-primary ml-3">Delete</a> --}}
-                    <a href="{{ url('Event') }}/{{ $event->id }}/edit" class="btn btn-primary">Edit</a>
+                        <a href="{{ url('Event') }}/invite/{{ $event->id }}" class="btn btn-primary">Invite</a>
+                    <a href="{{ url('Event') }}/{{ $event->id }}/edit" class="btn btn-primary ml-3">Edit</a>
                     <a href="{{ url('Event') }}/delete/{{$event->id}}" class="btn btn-primary ml-3">Delete</a>
                     </div>
                 </div>

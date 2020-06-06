@@ -148,6 +148,13 @@ class EventController extends Controller
         $event = Event::find($id);
         return view('Events.EventDelete', compact('event'));
     }
+    
+    public function invite($id)
+    {
+        $event = Event::find($id);
+        return $event;
+    }
+    
     public function export($type) 
     {
         return (new EventsExport($type))->download('events.xlsx');        
