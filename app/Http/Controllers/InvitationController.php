@@ -18,7 +18,10 @@ class InvitationController extends Controller
      */
     public function index()
     {
-        //
+        $Invitations = Invitation::all();
+        $Users = User::all();
+        $Events = DB::table('events')->where('userOwner', '=', Auth::id())->get();
+        return view('Invitations.InvitationList',compact('Events','Users', 'Invitations'));
     }
 
     /**
@@ -28,9 +31,10 @@ class InvitationController extends Controller
      */
     public function create()
     {
+    
         $Users = User::all();
         $Events = DB::table('events')->where('userOwner', '=', Auth::id())->get();
-        return view('Invitations.InvitationCreate', compact('Users', 'Events'));
+        return view('Invitations.InvitationCreate', compact('Events', 'Users'));
     }
 
     /**
