@@ -40,6 +40,7 @@ Route::get('Event/invite/{id}', 'EventController@invite');
 Route::get('Event/delete/{type}', 'EventController@delete');
 
 Route::resource('User','UserController');
+// Route::post('/User/{id}','UserController@update');
 
 Route::get('Event/export/{type}', 'EventController@export');
 
